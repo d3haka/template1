@@ -1,5 +1,5 @@
 import { useSuspenseQuery, type UseQueryOptions } from "@tanstack/react-query";
-import { getProducts } from "../api/product";
+import { getProducts } from "../apis/product";
 
 export const useProducts = (
   options?: Omit<
