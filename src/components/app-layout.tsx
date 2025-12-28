@@ -1,7 +1,7 @@
-import type { FC } from "react";
+import { type FC } from "react";
 import { Outlet } from "react-router";
 import { AnimatedPage } from "./animated-page";
-import { Header } from "./header";
+import { Header } from "@/components/header";
 
 export const AppLayout: FC = () => {
   return (
@@ -12,6 +12,7 @@ export const AppLayout: FC = () => {
         <AnimatedPage>
           <Outlet />
         </AnimatedPage>
+
         {/* <Footer /> */}
       </div>
     </>
