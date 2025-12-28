@@ -3,7 +3,7 @@ import { buttonVariants } from "./ui/button";
 import { cn } from "@/lib/utils";
 import type { VariantProps } from "class-variance-authority";
 
-export function ButtonAnimated({
+export function AnimatedButton({
   className,
   variant = "default",
   size = "default",
