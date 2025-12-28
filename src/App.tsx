@@ -12,21 +12,21 @@ function App() {
     <>
       <QueryProvider>
         <BrowserRouter>
-          <Routes>
-            <Route element={<AppLayout />}>
-              <Suspense
-                fallback={
-                  <div className="flex h-full w-full items-center justify-center">
-                    loading...
-                  </div>
-                }
-              >
+          <Suspense
+            fallback={
+              <div className="flex h-screen w-screen items-center justify-center">
+                loading...
+              </div>
+            }
+          >
+            <Routes>
+              <Route element={<AppLayout />}>
                 <Route path="/" element={<Home />} />
                 <Route path="/about" element={<About />} />
                 <Route path="/*" element={<Navigate to="/" />} />
-              </Suspense>
-            </Route>
-          </Routes>
+              </Route>
+            </Routes>
+          </Suspense>
         </BrowserRouter>
       </QueryProvider>
     </>
