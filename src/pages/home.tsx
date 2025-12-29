@@ -1,13 +1,21 @@
 import { AnimatedButton } from "@/components/animated-button";
+import { useThemeStore } from "@/store/theme-store";
 import type { FC } from "react";
 
 const Home: FC = () => {
-  // const theme = useThemeStore(s => s.theme);
+  const { theme, setTheme } = useThemeStore();
 
   return (
     <>
       <h1>hello</h1>
-      <AnimatedButton>ayo</AnimatedButton>
+      <AnimatedButton
+        onClick={() => {
+          if (theme === "light") setTheme("dark");
+          else setTheme("light");
+        }}
+      >
+        {theme}
+      </AnimatedButton>
     </>
   );
 };
