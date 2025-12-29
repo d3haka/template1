@@ -1,36 +1,19 @@
-import { lazy, Suspense } from "react";
-import { AppLayout } from "./components/app-layout";
+import { Suspense } from "react";
 import "./styles.css";
-import { BrowserRouter, Navigate, Route, Routes } from "react-router";
+import { BrowserRouter } from "react-router";
 import { QueryProvider } from "./components/query-provider.tsx";
-import { Spinner } from "./components/ui/spinner.tsx";
-
-const Home = lazy(() => import("./pages/home.tsx"));
-const About = lazy(() => import("./pages/about.tsx"));
+import { AnimatedRoutes } from "./components/animated-routes.tsx";
+import { Loading } from "./components/loading.tsx";
 
 function App() {
   return (
-    <>
-      <QueryProvider>
-        <Suspense
-          fallback={
-            <div className="flex h-screen w-screen items-center justify-center">
-              <Spinner className="size-8" />
-            </div>
-          }
-        >
-          <BrowserRouter>
-            <Routes>
-              <Route element={<AppLayout />}>
-                <Route path="/" element={<Home />} />
-                <Route path="/about" element={<About />} />
-                <Route path="/*" element={<Navigate to="/" />} />
-              </Route>
-            </Routes>
-          </BrowserRouter>
-        </Suspense>
-      </QueryProvider>
-    </>
+    <QueryProvider>
+      <Suspense fallback={<Loading />}>
+        <BrowserRouter>
+          <AnimatedRoutes />
+        </BrowserRouter>
+      </Suspense>
+    </QueryProvider>
   );
 }
 

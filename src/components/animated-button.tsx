@@ -2,13 +2,17 @@ import { motion } from "motion/react";
 import { buttonVariants } from "./ui/button";
 import { cn } from "@/lib/utils";
 import type { VariantProps } from "class-variance-authority";
+import type { ComponentProps, FC } from "react";
 
-export function AnimatedButton({
+type AnimatedButtonProps = ComponentProps<typeof motion.button> &
+  VariantProps<typeof buttonVariants> & {};
+
+export const AnimatedButton: FC<AnimatedButtonProps> = ({
   className,
   variant = "default",
   size = "default",
   ...props
-}: React.ComponentProps<typeof motion.button> & VariantProps<typeof buttonVariants> & {}) {
+}) => {
   return (
     <motion.button
       whileHover={{ scale: 1.03, y: -2, transition: { duration: 0.1 } }}
@@ -17,8 +21,8 @@ export function AnimatedButton({
       data-slot="button"
       data-variant={variant}
       data-size={size}
-      className={cn(buttonVariants({ variant, size, className }))}
+      className={cn("cursor-pointer", buttonVariants({ variant, size, className }))}
       {...props}
     />
   );
-}
+};
